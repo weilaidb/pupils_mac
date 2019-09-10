@@ -1,2 +1,2 @@
 # pupils_mac
-pupils app for tacos
+pupils app for macos
