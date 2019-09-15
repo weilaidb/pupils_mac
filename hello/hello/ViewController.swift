@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -33,7 +35,20 @@ class ViewController: UIViewController {
         
         setupButton()
         
+        
+//        var loginButton:UIButton = UIButton(type: UIButtonType.roundedRect)
+//        loginButton.frame = CGRectMake(
+//            0,
+//            passwordTextField.frame.origin.y
+//                + passwordTextField.frame.height
+//                + textFieldPaddingY*2,
+//            passwordTextField.frame.width - 40,
+//            usernameTextField.frame.height)
+        
+        
     }
+
+        
     func setupButton() {
         
         let images = ["publish-video","publish-picture","publish-text","publish-audio","publish-review","publish-offline"]
