@@ -36,6 +36,26 @@ class ViewController: UIViewController {
     @IBAction func pushButtonTestTouchDown(_ sender: Any) {
         print("pushButton test touch down")
     }
+    
+    
+    @IBAction func pushButtonTestTouchCancel(_ sender: Any) {
+        print("pushButton test touch cancel")
+    }
+    @IBAction func pushButtonTestTouchUpInside(_ sender: Any) {
+        print("pushButton test touch up inside")
+    }
+    @IBAction func pushButtonTestTouchUpOutSide(_ sender: Any) {
+        print("pushButton test touch up outside")
+    }
+    @IBAction func pushButtonTestTouchDragInside(_ sender: Any) {
+        print("pushButton test touch drag inside")
+    }
+    @IBAction func pushButtonTestTouchDragEnter(_ sender: Any) {
+        print("pushButton test touch drag enter")
+    }
+    @IBAction func pushButtonTestValueChanged(_ sender: Any) {
+        print("pushButton test value changed")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
