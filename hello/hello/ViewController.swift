@@ -31,10 +31,47 @@ class ViewController: UIViewController {
         self.view.addSubview(button)
         self.view.addSubview(button1)
         
-        
+        setupButton()
         
     }
-
+    func setupButton() {
+        
+        let images = ["publish-video","publish-picture","publish-text","publish-audio","publish-review","publish-offline"]
+        let titles = ["发视频","发图片","发段子","发声音","审帖","离线下载"]
+        // 每行放多少个
+        let maxCols:CGFloat = 3
+        // 间隔
+        let buttonMargn:CGFloat = 15
+        // 按钮宽
+        let buttonW:CGFloat = (UIScreen.main.bounds.width - (maxCols + 1)*buttonMargn)/3
+        // 按钮高
+        let buttonH = buttonW + 30
+        
+        let buttonSpace:CGFloat = (UIScreen.main.bounds.width - buttonW * maxCols - buttonMargn * 2)/(maxCols - 1)
+        
+        let startY:CGFloat = UIScreen.main.bounds.height / 2 - buttonW
+        
+        for i in 0..<images.count {
+            let button = UIButton()
+            button.setTitle(titles[i], for: .normal)
+            button.setTitleColor(UIColor.black, for: .normal)
+            button.setImage(UIImage.init(named: images[i]), for: .normal)
+            
+            let row = i / Int(maxCols)
+            let col = CGFloat(i).truncatingRemainder(dividingBy: maxCols)
+            
+            let x = buttonMargn + col * (buttonSpace + buttonW)
+            let y = startY + CGFloat(row) * (buttonH + buttonMargn)
+            let w = buttonW
+            let h = buttonH
+            
+            button.frame = CGRect(x: x, y: y, width: w, height: h)
+            view.addSubview(button)
+            
+        }
+    }
+    
+    
     @IBAction func pushButtonTestTouchDown(_ sender: Any) {
         print("pushButton test touch down")
     }
