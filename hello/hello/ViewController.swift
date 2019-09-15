@@ -19,11 +19,13 @@ class ViewController: UIViewController {
         //button 点击无参数
         let button = UIButton(frame: CGRect(x:50,y:200,width:300,height:100))
         button.backgroundColor = UIColor.yellow
+        button.setTitle("睡前故事", for: UIControlState.normal)
         button.addTarget(self, action: #selector(ViewController.buttonTap), for: UIControlEvents.touchUpInside)
         
         //button1 :点击有参数
         let button1 = UIButton(frame: CGRect(x:50, y:100,width: 300,height: 100))
         button1.backgroundColor = UIColor.green
+        button1.setTitle("天气", for: UIControlState.normal)
         button1.addTarget(self, action: #selector(ViewController.buttonTap1(button:)), for: UIControlEvents.touchUpInside)
         
         self.view.addSubview(button)
