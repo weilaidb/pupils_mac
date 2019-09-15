@@ -16,7 +16,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]
+                   initWithFrame:[[UIScreen mainScreen]bounds]];
+    UILabel *myMessage;
+//    UILabel *myUnusedMessage;
+    myMessage.font = [UIFont systemFontOfSize:48];
+    myMessage.text = @"Hello Weilai";
+    myMessage.textColor = [UIColor colorWithPatternImage:
+                           [UIImage imageNamed:@"Background.png"]];
+    [self.window addSubview:myMessage];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
