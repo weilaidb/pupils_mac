@@ -19,21 +19,33 @@ class ViewController: UIViewController {
         print("view did load")
         //replace 'Selector("buttonTap") with '#selector(ViewController.buttonTap)'
         //button 点击无参数
-        let button = UIButton(frame: CGRect(x:50,y:200,width:300,height:100))
-        button.backgroundColor = UIColor.yellow
-        button.setTitle("Hangge", for: UIControlState.normal)
-        button.addTarget(self, action: #selector(ViewController.buttonTap), for: UIControlEvents.touchUpInside)
+//        let button = UIButton(frame: CGRect(x:50,y:100,width:300,height:100))
+//        button.backgroundColor = UIColor.yellow
+//        button.setTitle("Hangge", for: UIControlState.normal)
+//        button.addTarget(self, action: #selector(ViewController.buttonTap), for: UIControlEvents.touchUpInside)
+//
+//        //button1 :点击有参数
+//        let button1 = UIButton(frame: CGRect(x:50, y:300,width: 300,height: 100))
+//        button1.backgroundColor = UIColor.blue
+//        button1.setTitle("搜索", for: UIControlState.normal)
+//        button1.addTarget(self, action: #selector(ViewController.buttonTap1(button:)), for: UIControlEvents.touchUpInside)
+//
+//        //buttonx :点击有参数
+//        let button2 = UIButton(frame: CGRect(x:50, y:900,width: 300,height: 100))
+//        button2.backgroundColor = UIColor.green
+//        button2.setTitle("GITHUB", for: UIControlState.normal)
+//        button2.addTarget(self, action: #selector(ViewController.buttonTap2(button:)), for: UIControlEvents.touchUpInside)
+//
+//        self.view.addSubview(button)
+//        self.view.addSubview(button1)
+//        self.view.addSubview(button2)
+//
         
-        //button1 :点击有参数
-        let button1 = UIButton(frame: CGRect(x:50, y:100,width: 300,height: 100))
-        button1.backgroundColor = UIColor.green
-        button1.setTitle("搜索", for: UIControlState.normal)
-        button1.addTarget(self, action: #selector(ViewController.buttonTap1(button:)), for: UIControlEvents.touchUpInside)
+        setupButtonInfo(x: 50, y: 100, width: 300, height: 100, title: "Hangge", color: UIColor.blue)
+        setupButtonInfo1(x: 50, y: 200, width: 300, height: 100, title: "搜索", color: UIColor.green)
+        setupButtonInfo2(x: 50, y: 300, width: 300, height: 100, title: "GITHUB", color: UIColor.yellow)
         
-        self.view.addSubview(button)
-        self.view.addSubview(button1)
-        
-        setupButton()
+//        setupButton()
         
         
 //        var loginButton:UIButton = UIButton(type: UIButtonType.roundedRect)
@@ -47,8 +59,35 @@ class ViewController: UIViewController {
         
         
     }
+    
+    func setupButtonInfo(x:Int, y:Int, width:Int, height:Int, title:String, color:UIColor)
+    {
+        let button = UIButton(frame: CGRect(x: x, y: y, width: width, height: height))
+        button.backgroundColor = color
+        button.setTitle(title, for: UIControlState.normal)
+        button.addTarget(self, action: #selector(ViewController.buttonTap), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(button)
+    }
 
-        
+    func setupButtonInfo1(x:Int, y:Int, width:Int, height:Int, title:String, color:UIColor)
+    {
+        let button = UIButton(frame: CGRect(x: x, y: y, width: width, height: height))
+        button.backgroundColor = color
+        button.setTitle(title, for: UIControlState.normal)
+        button.addTarget(self, action: #selector(ViewController.buttonTap1), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(button)
+    }
+    
+    func setupButtonInfo2(x:Int, y:Int, width:Int, height:Int, title:String, color:UIColor)
+    {
+        let button = UIButton(frame: CGRect(x: x, y: y, width: width, height: height))
+        button.backgroundColor = color
+        button.setTitle(title, for: UIControlState.normal)
+        button.addTarget(self, action: #selector(ViewController.buttonTap2), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(button)
+    }
+    
+    
     func setupButton() {
         
         let images = ["publish-video","publish-picture","publish-text","publish-audio","publish-review","publish-offline"]
@@ -125,7 +164,19 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
         print("memory low,warning!!!")
     }
-
+    
+    func jumptoUrl(string:String)
+    {
+        //setting url
+        guard let jumpUrl = URL(string: string) else {
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(jumpUrl) {
+            UIApplication.shared.openURL(jumpUrl)
+        }
+    }
+    
     //selector 其实是 Objective-C runtime 的概念
     @objc func buttonTap() {
         print("buttonTap")
@@ -139,16 +190,10 @@ class ViewController: UIViewController {
         jumptoUrl(string: urlString)
     }
     
-    func jumptoUrl(string:String)
-    {
-        //setting url
-        guard let jumpUrl = URL(string: string) else {
-            return
-        }
-        
-        if UIApplication.shared.canOpenURL(jumpUrl) {
-            UIApplication.shared.openURL(jumpUrl)
-        }
+    @objc func buttonTap2(button:UIButton) {
+        print("buttonTap参数")
+        let urlString:String = "https://github.com/weilaidb/pupils_mac"
+        jumptoUrl(string: urlString)
     }
 
 }
