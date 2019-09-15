@@ -21,13 +21,13 @@ class ViewController: UIViewController {
         //button 点击无参数
         let button = UIButton(frame: CGRect(x:50,y:200,width:300,height:100))
         button.backgroundColor = UIColor.yellow
-        button.setTitle("睡前故事", for: UIControlState.normal)
+        button.setTitle("Hangge", for: UIControlState.normal)
         button.addTarget(self, action: #selector(ViewController.buttonTap), for: UIControlEvents.touchUpInside)
         
         //button1 :点击有参数
         let button1 = UIButton(frame: CGRect(x:50, y:100,width: 300,height: 100))
         button1.backgroundColor = UIColor.green
-        button1.setTitle("天气", for: UIControlState.normal)
+        button1.setTitle("搜索", for: UIControlState.normal)
         button1.addTarget(self, action: #selector(ViewController.buttonTap1(button:)), for: UIControlEvents.touchUpInside)
         
         self.view.addSubview(button)
@@ -89,6 +89,16 @@ class ViewController: UIViewController {
     
     @IBAction func pushButtonTestTouchDown(_ sender: Any) {
         print("pushButton test touch down")
+//        var urlString = "http://hangge.com"
+//        var url = NSURL(string: urlString)
+//        //setting url
+//        guard let settingsUrl = URL(string: "https://cn.bing.com/") else {
+//            return
+//        }
+//
+//        if UIApplication.shared.canOpenURL(settingsUrl) {
+//            UIApplication.shared.openURL(settingsUrl)
+//        }
     }
     
     
@@ -119,10 +129,26 @@ class ViewController: UIViewController {
     //selector 其实是 Objective-C runtime 的概念
     @objc func buttonTap() {
         print("buttonTap")
+        let urlString:String = "http://hangge.com"
+        jumptoUrl(string: urlString)
     }
     
     @objc func buttonTap1(button:UIButton) {
         print("buttonTap参数")
+        let urlString:String = "https://cn.bing.com/"
+        jumptoUrl(string: urlString)
+    }
+    
+    func jumptoUrl(string:String)
+    {
+        //setting url
+        guard let jumpUrl = URL(string: string) else {
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(jumpUrl) {
+            UIApplication.shared.openURL(jumpUrl)
+        }
     }
 
 }
