@@ -41,9 +41,11 @@ class ViewController: UIViewController {
 //        self.view.addSubview(button2)
 //
         
-        setupButtonInfo(x: 50, y: 100, width: 300, height: 100, title: "Hangge", color: UIColor.blue)
-        setupButtonInfo1(x: 50, y: 200, width: 300, height: 100, title: "搜索", color: UIColor.green)
-        setupButtonInfo2(x: 50, y: 300, width: 300, height: 100, title: "GITHUB", color: UIColor.yellow)
+        setupButtonInfo(x: 50, y: 100, width: 300, height: 100, title: "Hangge", color: UIColor.blue,selector: #selector(ViewController.buttonTap))
+        setupButtonInfo(x: 50, y: 200, width: 300, height: 100, title: "搜索", color: UIColor.green,selector: #selector(ViewController.buttonTap1))
+        setupButtonInfo(x: 50, y: 300, width: 300, height: 100, title: "GITHUB", color: UIColor.yellow,selector: #selector(ViewController.buttonTap2))
+//        setupButtonInfo1(x: 50, y: 200, width: 300, height: 100, title: "搜索", color: UIColor.green)
+//        setupButtonInfo2(x: 50, y: 300, width: 300, height: 100, title: "GITHUB", color: UIColor.yellow)
         
 //        setupButton()
         
@@ -60,12 +62,12 @@ class ViewController: UIViewController {
         
     }
     
-    func setupButtonInfo(x:Int, y:Int, width:Int, height:Int, title:String, color:UIColor)
+    func setupButtonInfo(x:Int, y:Int, width:Int, height:Int, title:String, color:UIColor, selector:Selector)
     {
         let button = UIButton(frame: CGRect(x: x, y: y, width: width, height: height))
         button.backgroundColor = color
         button.setTitle(title, for: UIControlState.normal)
-        button.addTarget(self, action: #selector(ViewController.buttonTap), for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: selector, for: UIControlEvents.touchUpInside)
         self.view.addSubview(button)
     }
 
